@@ -9,25 +9,22 @@ metadata:
   name: http-echo-service
   namespace: http-echo
 spec:
-  type: ClusterIP
-  selector:
-    app: http-echo-deployment
   ports:
-  - port: 5678
+  - port: 80
     targetPort: 5678
+  selector:
+    app: http-echo
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: http-echo
   name: http-echo-deployment
-  labels:
-    app: http-echo-deployment
+  namespace: http-echo
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: http-echo
+  replicas: 2
   template:
     metadata:
       labels:
@@ -37,6 +34,6 @@ spec:
       - name: http-echo
         image: hashicorp/http-echo
         args:
-        - '-text=Hello, World!'
+        - "-text=Hello World!"
         ports:
         - containerPort: 5678

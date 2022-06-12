@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-website
+  labels:
+    app: website
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: website
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+      - name: website
+        image: hashicorp/http-echo
+        ports:
+        - containerPort: 5678
+        args:
+        - '-text=Hello, World!'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service-lb
+spec:
+  selector:
+    app: website
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5678
+  type: NodePort
