@@ -34,6 +34,6 @@ spec:
       - name: http-echo
         image: hashicorp/http-echo
         args:
-        - "-text=Hello World!"
+        - "-text=Hello QAInsights!"
         ports:
         - containerPort: 5678
