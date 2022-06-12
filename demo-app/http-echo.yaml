@@ -28,7 +28,7 @@ metadata:
   name: http-echo-service
   namespace: http-echo
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: http-echo
   ports:
