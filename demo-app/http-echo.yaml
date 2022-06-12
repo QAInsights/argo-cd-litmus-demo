@@ -15,7 +15,7 @@ spec:
   - name: http-echo
     image: hashicorp/http-echo
     args:
-      - '-text=Hello NaveenKumar''s Family!!!'    
+      - '-text=Hello World'    
     resources:
       limits:
         memory: "128Mi"
