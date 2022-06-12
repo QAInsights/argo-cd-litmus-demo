@@ -20,6 +20,8 @@ kind: Deployment
 metadata:
   name: http-echo-deployment
   namespace: http-echo
+  labels:
+    app: http-echo
 spec:
   selector:
     matchLabels:
